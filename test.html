@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ul task</title>
+  </head>
+  <body>
+    <ul id="ulEle"></ul>
+  </body>
+  <script>
+    let ulEle = document.querySelector("#ulEle");
+    let arrEle = ["HTML", "CSS", "Javascript", "Python"];
+    let liEle = arrEle.map((e) => {
+      let liEle = document.createElement("li");
+      liEle.setAttribute("id", e);
+      liEle.innerHTML = e;
+
+      return liEle;
+    });
+
+    ulEle.append(...liEle);
+
+    console.log(liEle);
+    // liEle.forEach((e) => {
+    //   e.addEventListener("click", function () {
+    //     let selectedLi = document.querySelector(`#${e}`);
+
+    //     selectedLi.style.color = "red";
+    //   });
+    // });
+    ulEle.addEventListener("click", changeColor);
+    function changeColor(e) {
+      e.target.style.color = "red";
+    }
+  </script>
+  <select name="colors" id="color">
+    <option value="Red" id="Red">Red</option>
+    <option value="Green" id="Green">Green</option>
+    <option value="Blue" id="Blue">Blue</option>
+    <option value="Purple" id="Purple">Purple</option>
+  </select>
+  <button id="remove_color_btn">Remove Color</button>
+  <script>
+    let btnEle = document.querySelector("#remove_color_btn");
+    btnEle.addEventListener("click", removeColor);
+    function removeColor() {
+      console.log("clicked");
+      let selectedColor = document.querySelector("#color");
+      console.log(selectedColor);
+      selectedColor.remove(selectedColor.selectedIndex);
+    }
+  </script>
+</html>
